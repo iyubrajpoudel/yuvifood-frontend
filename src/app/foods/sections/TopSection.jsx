@@ -1,13 +1,9 @@
 import React from 'react'
 import Image from 'next/image';
 
-
 // assets {
     
-// import Logo from "@/assets/yuvifood_logo.png"
-// import { images } from './../../../constants/assets';
 import { images } from '@/constants/assets';
-// console.log(images.logo);
 
 // } assets
 
