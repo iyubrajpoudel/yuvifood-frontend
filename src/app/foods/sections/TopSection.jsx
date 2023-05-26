@@ -36,7 +36,7 @@ const filterButtons = [
 const TopSection = () => {
   return (
     <div className="wrapper bg-dark-soft py-8">
-        <div className="container">
+        <div className="container p-2">
             <div className="row flex flex-col gap-8">
                 <div className="row flex justify-center md:justify-between items-center gap-4 flex-wrap">
                     <div className="col">

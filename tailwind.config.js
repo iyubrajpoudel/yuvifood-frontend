@@ -1,3 +1,5 @@
+// import foods from "./src/assets/foods.jpg"
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -12,7 +14,12 @@ module.exports = {
         dark: {
           soft: "#323334",
         }
-      }
+      },
+      backgroundImage: {
+        // 'hero-pattern': "url('/img/hero-pattern.svg')",
+        // 'foods-bg': `url(${foods})`,
+        'foods-bg' : "url('./src/assets/foods.jpg')",
+      },
     },
   },
   plugins: [],
