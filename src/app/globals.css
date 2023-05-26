@@ -4,6 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components{
+  .container{
+    @apply max-w-[1280px] mx-auto
+  }
+}
+
+
 /* } Tailwind CSS */
 
 /* CSS { */
