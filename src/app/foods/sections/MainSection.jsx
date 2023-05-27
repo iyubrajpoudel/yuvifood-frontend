@@ -59,7 +59,7 @@ const MainSection = () => {
     // using custom hook to get context data
     // const context = useMyContext();
     // console.log(context);
-    const { foods, setFoods, query, setQuery, filter, setFilter } = useMyContext();
+    const { foods, setFoods, query, filter } = useMyContext();
   
   // } 
   let foodsData;

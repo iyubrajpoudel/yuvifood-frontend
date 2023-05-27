@@ -39,7 +39,7 @@ const filterButtons = [
 
 const TopSection = () => {
 
-    const { foods, setFoods, query, setQuery, filter, setFilter } = useMyContext();
+    const { query, setQuery, filter, setFilter } = useMyContext();
     console.log();
 
     // const [searchQuery, setSearchQuery] = useState(null);
@@ -64,7 +64,7 @@ const TopSection = () => {
                 </div>
                 <div className="row">
                     <div className="filter-buttons-wrappper flex justify-center gap-4 flex-wrap">
-                        {filterButtons.map((button) => <Button className={`bg-primary hover:bg-red-600 text-white`} handleClick={()=>setFilter(button.filter)}>{button.name}</Button>)}
+                        {filterButtons.map((filterButton) => <Button className={`${filter === filterButton.filter ? `bg-red-700` : `bg-red-500` } hover:bg-red-700 text-white`} handleClick={()=>setFilter(filterButton.filter)}>{filterButton.name}</Button>)}
                     </div>
                 </div>
             </div>
