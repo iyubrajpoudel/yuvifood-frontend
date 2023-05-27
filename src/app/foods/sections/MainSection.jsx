@@ -89,14 +89,31 @@ const MainSection = () => {
         <div className="container p-2">
           <div className="row grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-6">
 
-            {foods?.filter((food)=> food.name.toLowerCase().includes(query.toLowerCase()) || food.text.toLowerCase().includes(query.toLowerCase()) || food.price.toString().includes(query.toLowerCase())).map((food, index) => <FoodItemCard key={index} name={food.name} description={food.text} image={food.image} price={(food.price).toFixed(2)} />)}
+          {foods?.
+            filter((food) =>
+              food.name.toLowerCase().includes(query.toLowerCase()) ||
+              food.text.toLowerCase().includes(query.toLowerCase()) ||
+              food.price.toString().includes(query.toLowerCase())
+            )
+            .filter((food) => food.type === filter || filter === "all")
+            .map((food, index) => (
+              <FoodItemCard
+                key={index}
+                name={food.name}
+                description={food.text}
+                image={food.image}
+                price={food.price.toFixed(2)}
+              />
+            ))}
+
+            {/* foods?.filter((food)=> food.name.toLowerCase().includes(query.toLowerCase()) || food.text.toLowerCase().includes(query.toLowerCase()) || food.price.toString().includes(query.toLowerCase())).map((food, index) => <FoodItemCard key={index} name={food.name} description={food.text} image={food.image} price={(food.price).toFixed(2)} />) */}
 
             {/* foods?.map((food, index) => <FoodItemCard key={index} name={food.name} description={food.text} image={food.image} price={(food.price).toFixed(2)} />) */}
           </div>
-          {/* <div className="testing">
+          { /*<div className="testing">
             <div className="bg-white p-4">Query Context : {query}</div>
             <div className="bg-white p-4">Filter Context : {filter}</div>
-          </div> */}
+            </div> */}
         </div>
     </div>
 
