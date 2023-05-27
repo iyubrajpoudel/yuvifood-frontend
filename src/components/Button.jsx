@@ -1,8 +1,17 @@
-import React from 'react'
+"use client"
+import React, { useState } from 'react'
 
-const Button = ({children, type, onChange, className}) => {
+const Button = ({children, type, handleClick, className}) => {
+  const [filter, setFilter] = useState("all");
+
+  const clickHandler = (e)=> {
+    setFilter(children.toLowerCase());
+  }
+
   return (
-    <button type={type} onChange={onChange} className={`px-4 py-2 rounded-md outline-none focus:outline-1 focus:outline-red-800 ${className}`}>{children}</button>
+    <button type={type}
+    onClick={handleClick ? handleClick : clickHandler}
+    className={`px-4 py-2 rounded-md outline-none focus:outline-1 focus:outline-red-800 ${className}`}>{children}</button>
   )
 }
 
@@ -11,7 +20,7 @@ Button.defaultProps = {
     children: "Click",
     className: '',
     type: 'button',
-    onChange:''
+    handleClick: null
   };
 
 export default Button

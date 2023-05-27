@@ -1,4 +1,5 @@
-import React from 'react'
+"use client"
+import React, { useState } from 'react'
 import Image from 'next/image';
 
 // assets {
@@ -15,21 +16,25 @@ import Button from '@/components/Button';
 
 const filterButtons = [
     {
-        name: "All"
+        name: "All",
     },
     {
-        name: "Breakfast"
+        name: "Breakfast",
     },
     {
-        name: "Lunch"
+        name: "Lunch",
     },
     {
-        name: "Dinner"
+        name: "Dinner",
     },
 ]
 
 
 const TopSection = () => {
+
+    const [searchQuery, setSearchQuery] = useState(null);
+    // const [filter, setFilter] = useState("all");
+
   return (
     <div className="wrapper bg-dark-soft py-8">
         <div className="container p-2">
@@ -42,7 +47,8 @@ const TopSection = () => {
                     </div>
                     <div className="col">
                         <div className="input-wrapper">
-                            <input type="text" name="search" id="searchInput" className='w-[15rem] bg-transparent border border-red-500 outline-none rounded-sm px-4 py-2 placeholder-gray-300 text-white' placeholder='Search for food' />
+                            <input type="text" name="search" id="searchInput" value={searchQuery} onChange={(e)=>setSearchQuery(e.target.value)}
+                            className='w-[15rem] bg-transparent border border-red-500 outline-none rounded-sm px-4 py-2 placeholder-gray-300 text-white' placeholder='Search for food' />
                         </div>
                     </div>
                 </div>
