@@ -3,6 +3,7 @@ const nextConfig = {
     images: {
         domains: [
             'localhost',
+            'yuvifood-backend.onrender.com'
         ]
     }
 }
