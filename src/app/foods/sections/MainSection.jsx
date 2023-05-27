@@ -25,7 +25,7 @@ const FoodItemCard = ({image, name, description, price}) => {
         <div className="row flex justify-between gap-4">
           <div className="col">
             { !image && <Image src={placeholderImage} width={0} height={0} alt='food_image' className='max-w-[120px] h-[120px] rounded-full'/> }
-            { image && <Image src={`${BASE_URL}${image}`} width={0} height={0} alt='food_image' className='max-w-[120px] h-[120px] rounded-full'/>}
+            { image && <Image src={`${BASE_URL}${image}`} width={120} height={0} alt='food_image' className='max-w-[120px] rounded-full'/>}
           </div>
           <div className="col text-white flex flex-col justify-between gap-4">
             <div className="row flex flex-col gap-2">
@@ -74,12 +74,8 @@ const MainSection = async () => {
       style={{ background: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url(${foodImage.src})` }}
       >
         <div className="container p-2">
-            <FoodItemCard/>
           <div className="row grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-6">
-            {foodsData?.map((food) => <FoodItemCard name={food.name} description={food.text} price={(food.price).toFixed(2)} />)}
-            <FoodItemCard/>
-            <FoodItemCard/>
-            <FoodItemCard/>
+            {foodsData?.map((food) => <FoodItemCard name={food.name} description={food.text} image={food.image} price={(food.price).toFixed(2)} />)}
           </div>
         </div>
     </div>
