@@ -4,6 +4,9 @@ import MainSection from './sections/MainSection';
 import { BASE_URL } from '@/config/backend';
 import { fetchData } from '@/utils/fetchData';
 
+// context
+import { MyContextProvider } from '@/contexts/context'
+
 export const metadata = {
     title: 'YuviFood | Foods',
     description: 'Foods Page',
@@ -12,14 +15,18 @@ export const metadata = {
 const page = async () => {
 
   return (
-    <div className="wrappper">
-      <section>
-        <TopSection />
-      </section>
-      <section>
-        <MainSection />
-      </section>
-    </div>
+    <>
+    <MyContextProvider>
+      <div className="wrappper">
+        <section>
+          <TopSection />
+        </section>
+        <section>
+          <MainSection />
+        </section>
+      </div>
+    </MyContextProvider>
+    </>
   )
 }
 

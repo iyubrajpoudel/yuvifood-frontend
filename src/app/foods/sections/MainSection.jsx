@@ -1,6 +1,6 @@
-// "use client"
+"use client"
 
-import React from 'react'
+import React, {useEffect} from 'react'
 import Image from 'next/image'
 
 // assets {
@@ -15,6 +15,7 @@ import placeholderImage from "@/assets/image-placeholder.png"
 
 import { BASE_URL } from '@/config/backend';
 import { fetchData } from '@/utils/fetchData';
+import { useMyContext } from '@/contexts/context'
 
 
 const FoodItemCard = ({image, name, description, price}) => {
@@ -33,7 +34,7 @@ const FoodItemCard = ({image, name, description, price}) => {
               <p className='text-base'>{description}</p>
             </div>
             <div className="row text-right">
-              <span className="price px-2 py-1 text-lg bg-primary rounded-md ml-auto">$ {price}</span>
+              <span className="price px-2 py-1 text-lg bg-primary rounded-md ml-auto" onClick={()=>alert(`Price of food is : $ ${price}`)}>$ {price}</span>
             </div>
           </div>
         </div>
@@ -51,22 +52,34 @@ FoodItemCard.defaultProps = {
   price: '0.00'
 };
 
-const MainSection = async () => {
+const MainSection = () => {
 
-  const url = `${BASE_URL}/foods` 
-  const options = {
-    // fetch options
-    method: "GET"
-  }
+  //  {
+  
+    // using custom hook to get context data
+    // const context = useMyContext();
+    // console.log(context);
+    const { foods, setFoods, query, setQuery, filter, setFilter } = useMyContext();
+  
+  // } 
+  let foodsData;
+  useEffect(() => {
+    const fetchFoods = async () => {
+      const url = `${BASE_URL}/foods`;
+      const options = {
+        method: "GET"
+      };
 
-  let foodsData = null;
-  try {
-    // const foodsData = await fetchData(url, options); // foodsData can't be accessible in jSX if defined inside try { 0 block}
-    foodsData = await fetchData(url, options);
-    console.log(foodsData);
-  } catch (error) {
-    console.log(error);
-  }
+      try {
+        foodsData = await fetchData(url, options);
+        setFoods(foodsData);
+      } 
+      catch (error) {
+        console.log(error);
+      }
+    };
+    fetchFoods();
+  }, []);
 
   return (
     <div 
@@ -75,8 +88,10 @@ const MainSection = async () => {
       >
         <div className="container p-2">
           <div className="row grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-6">
-            {foodsData?.map((food) => <FoodItemCard name={food.name} description={food.text} image={food.image} price={(food.price).toFixed(2)} />)}
+            {foods?.map((food, index) => <FoodItemCard key={index} name={food.name} description={food.text} image={food.image} price={(food.price).toFixed(2)} />)}
           </div>
+          <div className="bg-white p-8">Query Context : {query}</div>
+          <div className="bg-white p-8">Filter Context : {filter}</div>
         </div>
     </div>
 

@@ -2,6 +2,9 @@
 import React, { useState } from 'react'
 import Image from 'next/image';
 
+// contexts
+import { useMyContext } from '@/contexts/context'
+
 // assets {
     
 import { images } from '@/constants/assets';
@@ -17,22 +20,29 @@ import Button from '@/components/Button';
 const filterButtons = [
     {
         name: "All",
+        filter: "all"
     },
     {
         name: "Breakfast",
+        filter: "breakfast"
     },
     {
         name: "Lunch",
+        filter: "lunch"
     },
     {
         name: "Dinner",
+        filter: "dinner"
     },
 ]
 
 
 const TopSection = () => {
 
-    const [searchQuery, setSearchQuery] = useState(null);
+    const { foods, setFoods, query, setQuery, filter, setFilter } = useMyContext();
+    console.log();
+
+    // const [searchQuery, setSearchQuery] = useState(null);
     // const [filter, setFilter] = useState("all");
 
   return (
@@ -47,14 +57,14 @@ const TopSection = () => {
                     </div>
                     <div className="col">
                         <div className="input-wrapper">
-                            <input type="text" name="search" id="searchInput" value={searchQuery} onChange={(e)=>setSearchQuery(e.target.value)}
+                            <input type="text" name="search" id="searchInput" value={query} onChange={(e)=>setQuery(e.target.value)}
                             className='w-[15rem] bg-transparent border border-red-500 outline-none rounded-sm px-4 py-2 placeholder-gray-300 text-white' placeholder='Search for food' />
                         </div>
                     </div>
                 </div>
                 <div className="row">
                     <div className="filter-buttons-wrappper flex justify-center gap-4 flex-wrap">
-                        {filterButtons.map((button) => <Button className={`bg-primary hover:bg-red-600 text-white`}>{button.name}</Button>)}
+                        {filterButtons.map((button) => <Button className={`bg-primary hover:bg-red-600 text-white`} handleClick={()=>setFilter(button.filter)}>{button.name}</Button>)}
                     </div>
                 </div>
             </div>

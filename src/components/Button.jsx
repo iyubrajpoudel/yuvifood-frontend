@@ -2,10 +2,9 @@
 import React, { useState } from 'react'
 
 const Button = ({children, type, handleClick, className}) => {
-  const [filter, setFilter] = useState("all");
 
   const clickHandler = (e)=> {
-    setFilter(children.toLowerCase());
+    console.log("clicked!");
   }
 
   return (
