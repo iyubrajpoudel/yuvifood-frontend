@@ -10,7 +10,7 @@ const HomePage = () => {
   useEffect(() => {
     // Navigate to a specific page on load
     router.push('/foods');
-  }, []);
+  }, [router]);
 
   return (
     <div>

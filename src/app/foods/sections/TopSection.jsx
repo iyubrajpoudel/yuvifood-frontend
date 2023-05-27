@@ -52,7 +52,7 @@ const TopSection = () => {
                 <div className="row flex justify-center md:justify-between items-center gap-4 flex-wrap">
                     <div className="col">
                         <div className="logo-wrapper">
-                            <Image src={images.logo} width="200" height="0"/>
+                            <Image src={images.logo} width="200" height="0" alt="logo"/>
                         </div>
                     </div>
                     <div className="col">
@@ -64,7 +64,7 @@ const TopSection = () => {
                 </div>
                 <div className="row">
                     <div className="filter-buttons-wrappper flex justify-center gap-4 flex-wrap">
-                        {filterButtons.map((filterButton) => <Button className={`${filter === filterButton.filter ? `bg-red-700` : `bg-red-500` } hover:bg-red-700 text-white`} handleClick={()=>setFilter(filterButton.filter)}>{filterButton.name}</Button>)}
+                        {filterButtons.map((filterButton) => <Button key="filterButton.filter" className={`${filter === filterButton.filter ? `bg-red-700` : `bg-red-500` } hover:bg-red-700 text-white`} handleClick={()=>setFilter(filterButton.filter)}>{filterButton.name}</Button>)}
                     </div>
                 </div>
             </div>

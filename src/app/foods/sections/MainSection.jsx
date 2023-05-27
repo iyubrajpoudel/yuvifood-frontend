@@ -1,6 +1,6 @@
 "use client"
 
-import React, {useEffect} from 'react'
+import React, {useRef, useEffect} from 'react'
 import Image from 'next/image'
 
 // assets {
@@ -62,6 +62,8 @@ const MainSection = () => {
     const { foods, setFoods, query, filter } = useMyContext();
   
   // } 
+  const foodsDataRef = useRef(null);
+  
   let foodsData;
   useEffect(() => {
     const fetchFoods = async () => {
