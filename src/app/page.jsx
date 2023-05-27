@@ -1,13 +1,22 @@
-import React from 'react'
+"use client"
 
-const page = () => {
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/router';
+
+const HomePage = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    // Navigate to a specific page on load
+    router.push('/foods');
+  }, []);
+
   return (
-    <div className="wrapper">
-      <div className="container">
-        <h1>Hello World!</h1>
-      </div>
+    <div>
+      {/* Home Page */}
     </div>
   )
-}
+};
 
-export default page
+export default HomePage;
